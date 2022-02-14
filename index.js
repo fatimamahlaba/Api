@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors')
 const projectApi = require('./Routes/projectApi');
 const contactApi = require('./Routes/contactApi');
+const testimonialsApi = require('./Routes/testimonialsApi');
 
 const app = express()
 const path = require('path');
@@ -16,6 +17,7 @@ app.get('/', (req, res, next) =>{
 })
 app.use('/projects', projectApi);
 app.use('/contact', contactApi);
+app.use('/testimonials', testimonialsApi);
 
 app.listen(app.get('port'), server => {
     console.info(`Server listen on port ${app.get('port')}`);

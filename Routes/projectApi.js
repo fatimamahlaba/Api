@@ -3,7 +3,7 @@ const express = require('express');
 // const { read } = require('fs');
 // const { get } = require('http');
 const router = express.Router();
-const fixArrayId = require("../helpers")
+// const fixArrayId = require("../helpers")
 
 let project = [{
   id:0,
