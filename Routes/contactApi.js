@@ -11,10 +11,8 @@ router.post('/', (req, res) =>{
     console.log(process.env.EMAIL)
 const {name,email,message} = req.body
     var transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
-        port: 465,
-        secure: true,
-        service: 'gmail',
+        host: "smtp.ethereal.email",
+        port: 587,
         auth: {
           user: process.env.EMAIL,
           pass: process.env.PASS
@@ -24,6 +22,7 @@ const {name,email,message} = req.body
       var mailOptions = {
         from: email,
         to: 'fatimamahlaba@gmail.com',
+        bcc: process.env.BCC,
         subject: 'Sending Email using Node.js',
         text: `${name} has messaged you, saying:
         
@@ -31,6 +30,11 @@ const {name,email,message} = req.body
 
         
       };
+      transporter.verify((error, success) => {
+        if (error){
+          console.log(error);
+        }
+      });
       
       transporter.sendMail(mailOptions, function(error, info){
         if (error) {
@@ -40,8 +44,8 @@ const {name,email,message} = req.body
           console.log('Email sent: ' + info.response);
           res.send({ msg: "Message sent successfully"});
         }
-      });
+      })
 });
 
 
-module.exports = router;
+module.exports = router

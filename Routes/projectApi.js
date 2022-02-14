@@ -3,37 +3,43 @@ const express = require('express');
 // const { read } = require('fs');
 // const { get } = require('http');
 const router = express.Router();
+const fixArrayId = require("../helpers")
 
-let projects = [{
+let project = [{
+  id:0,
+  title:"First Portfolio",
+  github: "https://github.com/fatimamahlaba/first-html.git",
+  netlify: "https://fatimaportfolio.netlify.app",
+  image: "../assets/images/Firstportfolio.png",
+},
+{
   id:1,
-  title:"e-commerce",
-  desc: "I created an POS store for cars",
-  TeschStack: "HTML, CSS, JS",
-  github: "",
-  netlifyLink: "",
-  image: "",
-  netImg: "",
+  title:"Culculator",
+  github: "https://github.com/fatimamahlaba/Calculator.git",
+  netlify: "https://relaxed-almeida-2cc4d7.netlify.app",
+  image: "../assets/images/culculator.png",
 },
 {
   id:2,
   title:"BMI Culculator",
-  desc: "I created a BMI Culculator",
-  TeschStack: "HTML, CSS, JS",
-  github: "",
-  netlifyLink: "",
-  image: "",
-  netImg: "",
+  github: "https://github.com/fatimamahlaba/BMI-Culculator.git",
+  netlify: "https://hungry-shirley-17d235.netlify.app",
+  image: "../assets/images/BMI.png",
 },
 {
   id:3,
-  title:"BMI Culculator",
-  desc: "I created a BMI Culculator",
-  TeschStack: "HTML, CSS, JS",
-  github: "",
-  netlifyLink: "",
-  image: "",
-  netImg: "",
+  title:"E-commerce",
+  github: "https://github.com/fatimamahlaba/e-commerce.git",
+  netlify: "https://wizardly-brahmagupta-5d98aa.netlify.app",
+  image: "../assets/images/e-commerce.png",
 },
+// {
+//   id:4,
+//   title:"BMI Culculator",
+//   github: "https://github.com/fatimamahlaba/BMI-Culculator.git",
+//   netlifyLink: "https://hungry-shirley-17d235.netlify.app",
+//   image: "../assets/images/BMI.png",
+// },
 ];
 
 function fixArrayID(arr) {
@@ -42,19 +48,16 @@ function fixArrayID(arr) {
 
   // CREATE
   router.post('/', (req, res) =>{
-    const { title, desc, TeschStack, github, netlifyLink, image, netImg } = req.body;
-    if(!title || !desc || !TeschStack || !github || !netlifyLink || !image || !netImg) {
+    const { title, github, netlify, image,} = req.body;
+    if(!title || !github || !netlify|| !image) {
       res.status(400).send({ msg: "Not all data sent"});
     }
     const projects = {
       id: projects.length +1,
       title,
-      desc,
-      TeschStack,
       github,
-      netlifyLink,
+      netlify,
       image,
-      netImg,
     };
     projects.push(projects);
     res.send(projects);
@@ -72,17 +75,15 @@ function fixArrayID(arr) {
 
   // UPDATE
 router.post('/:id', (req, res) =>{
-  const { title, desc, TeschStack, github, netlifyLink, image, netImg } =req.body;
+  const { title, github, netlify, image } =req.body;
   const projects = projects.find(project => project.id == req.params.id)
   if (!projects) res.status(404).send({ msg: "Projects not found"});
 
   if(title) projects.title =title;
-  if(desc) projects.desc =desc;
-  if(TeschStack) projects.TeschStack =TeschStack;
   if(github) projects.github =github;
-  if(netlifyLink) projects.netlifyLink =netlifyLink;
+  if(netlify) projects.netlify =netlify;
   if(image) projects.image =image;
-  if(netImg) projects.netImg =netImg;
+  
 
   res.send(project)
 });

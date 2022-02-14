@@ -1,7 +1,7 @@
 const express = require('express');
-const req = require('express/lib/request');
-const { read } = require('fs');
-const { get } = require('http');
+// const req = require('express/lib/request');
+// const { read } = require('fs');
+// const { get } = require('http');
 const router = express.Router();
 
 let testimonials = [{
