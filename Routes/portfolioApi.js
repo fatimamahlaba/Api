@@ -5,33 +5,33 @@ const express = require('express');
 const router = express.Router();
 // const fixArrayId = require("../helpers")
 
-let project = [{
+let projects = [{
   id:0,
   title:"First Portfolio",
   github: "https://github.com/fatimamahlaba/first-html.git",
   netlify: "https://fatimaportfolio.netlify.app",
-  image: "../assets/images/Firstportfolio.png",
+  image: "https://i.postimg.cc/5txYjMTG/Firstportfolio.png",
 },
 {
   id:1,
   title:"Culculator",
   github: "https://github.com/fatimamahlaba/Calculator.git",
   netlify: "https://relaxed-almeida-2cc4d7.netlify.app",
-  image: "../assets/images/culculator.png",
+  image: "https://i.postimg.cc/GhVxB9xf/culculator.png",
 },
 {
   id:2,
   title:"BMI Culculator",
   github: "https://github.com/fatimamahlaba/BMI-Culculator.git",
   netlify: "https://hungry-shirley-17d235.netlify.app",
-  image: "../assets/images/BMI.png",
+  image: "https://i.postimg.cc/CL1cB3TR/BMI.png",
 },
 {
   id:3,
   title:"E-commerce",
   github: "https://github.com/fatimamahlaba/e-commerce.git",
   netlify: "https://wizardly-brahmagupta-5d98aa.netlify.app",
-  image: "../assets/images/e-commerce.png",
+  image: "https://i.postimg.cc/qv2yzwRt/e-commerce.png",
 },
 // {
 //   id:4,
@@ -59,38 +59,41 @@ function fixArrayID(arr) {
       netlify,
       image,
     };
-    projects.push(projects);
-    res.send(projects);
+    projects.push(project);
+    res.send(project);
   });
 
   // READ 
   router.get('/', (req, res) =>{
-    res.send(projects)
+    res.send(projects);
   });
   router.get('/:id', (req, res) => {
-    const projects = projects.find(project => project.id == req.params.id)
+    const project = projects.find(project => project.id == req.params.id)
     if (!project) res.status(404).send({ msg: "Projects not found"});
-    res.send(projects)
-  })
+    res.send(project)
+  });
 
   // UPDATE
-router.post('/:id', (req, res) =>{
+  router.post('/:id', (req, res) =>{
   const { title, github, netlify, image } =req.body;
-  const projects = projects.find(project => project.id == req.params.id)
-  if (!projects) res.status(404).send({ msg: "Projects not found"});
+  const project = projects.find(project => project.id == req.params.id)
+  if (!project) res.status(404).send({ msg: "Projects not found"});
 
-  if(title) projects.title =title;
-  if(github) projects.github =github;
-  if(netlify) projects.netlify =netlify;
-  if(image) projects.image =image;
+  if(title) project.title =title;
+  if(github) project.github =github;
+  if(netlify) project.netlify =netlify;
+  if(image) project.image =image;
   
 
   res.send(project)
-});
+  });
 
 // DELETE
-router.post('/', (req, res) =>{
+router.post('/:id', (req, res) => {
 projects = projects.filter(projects => projects.id !== read.params.id);
+fixArrayID(projects);
+res.send({msg: "Project deleted"});
+
 });
 
 module.exports = router;
