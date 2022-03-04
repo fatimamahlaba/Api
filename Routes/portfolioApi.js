@@ -1,9 +1,7 @@
 const express = require('express');
-// const req = require('express/lib/request');
-// const { read } = require('fs');
-// const { get } = require('http');
+
 const router = express.Router();
-// const fixArrayId = require("../helpers")
+
 
 let projects = [{
   id:0,
@@ -33,13 +31,27 @@ let projects = [{
   netlify: "https://wizardly-brahmagupta-5d98aa.netlify.app",
   image: "https://i.postimg.cc/qv2yzwRt/e-commerce.png",
 },
-// {
-//   id:4,
-//   title:"BMI Culculator",
-//   github: "https://github.com/fatimamahlaba/BMI-Culculator.git",
-//   netlifyLink: "https://hungry-shirley-17d235.netlify.app",
-//   image: "../assets/images/BMI.png",
-// },
+{
+  id:4,
+  title:"Vue Culculator",
+  github: "https://github.com/fatimamahlaba/Vue-calculator.git",
+  netlifyLink: "https://hungry-nobel-d4d3d6.netlify.app/",
+  image: "https://i.postimg.cc/FKrYqc1S/vue.png",
+},
+{
+  id:5,
+  title:"Stop Watch",
+  github: "https://github.com/fatimamahlaba/Stopwatch.git",
+  netlifyLink: "https://affectionate-northcutt-dc4a44.netlify.app",
+  image: "https://i.postimg.cc/x1JF5CzQ/stopwatch.png",
+},
+{
+  id:6,
+  title:"Reaction-Timer Game",
+  github: "https://github.com/fatimamahlaba/reaction-timer-game.git",
+  netlifyLink: "https://happy-lamport-8e96c8.netlify.app",
+  image: "hhttps://i.postimg.cc/HWtnPdy8/reaction.png",
+},
 ];
 
 function fixArrayID(arr) {

@@ -33,11 +33,11 @@ let testimonials = [{
  image:"../assets/images/Seth.png",
   },
   {
-    id:5,
-    title:"Head of Curriculum and Learning",
-    name: "Godwin",
-    test: "I am delighted to be called upon as a reference for Fatima. She always behaves professionally.",
-    image:"../assets/images/Godwin.jpeg",
+  id:5,
+  title:"Head of Curriculum and Learning",
+  name: "Godwin",
+  test: "I am delighted to be called upon as a reference for Fatima. She always behaves professionally.",
+  image:"../assets/images/Godwin.jpeg",
   },
 ];
 
@@ -46,7 +46,7 @@ function fixArrayID(arr) {
   };
 
   // CREATE
-  router.post('/', (req, res) =>{
+  router.post('/', (req, res) => {
     const { title, name, test, image, } = req.body;
     if(!title || !name || !test|| !image ) {
       res.status(400).send({ msg: "Not all data sent"});
