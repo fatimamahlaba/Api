@@ -50,7 +50,7 @@ let projects = [{
   title:"Reaction-Timer Game",
   github: "https://github.com/fatimamahlaba/reaction-timer-game.git",
   netlifyLink: "https://happy-lamport-8e96c8.netlify.app",
-  image: "hhttps://i.postimg.cc/HWtnPdy8/reaction.png",
+  image: "https://i.postimg.cc/HWtnPdy8/reaction.png",
 },
 ];
 
